@@ -38,6 +38,7 @@ const SignIn: React.FC<SignInProps> = ( {handleOpen}) => {
     <Container>
       <form
         onSubmit={handleSignIn}
+        method='POST'
         style={{
             display: 'flex',
             flexDirection: 'column',
