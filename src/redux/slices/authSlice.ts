@@ -16,7 +16,6 @@ export const loginUser = createAsyncThunk(
       });  
       const authProfileUrl = 'https://teamfinder.onrender.com/profile'
         const data = await res.json();
-        console.log('DATA: ',data)
         try {
             const res = await fetch(authProfileUrl, {
                 method: 'GET',
@@ -30,7 +29,6 @@ export const loginUser = createAsyncThunk(
             }
 
             const profileData = await res.json()
-            console.log(profileData)
             return profileData 
         } catch (error) {
             console.log(error)
