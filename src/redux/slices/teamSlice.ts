@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { TeamState, Team } from '../../types/Team';
-import { useSelector } from 'react-redux';
-import { RootState } from './rootSlice';
-import { User } from '../../types/User';
 
 export const initialState: TeamState = {
     teams: [],

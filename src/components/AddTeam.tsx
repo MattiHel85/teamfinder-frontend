@@ -1,11 +1,9 @@
 import React, { useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Container, Button, TextField, Divider } from "@mui/material";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { Team } from '../types/Team';
 import { addTeamAsync } from '../redux/slices/teamSlice';
-import { RootState } from '../redux/slices/rootSlice';
 
 const AddTeam: React.FC = ( ) => {
   const [newTeam, setNewTeam] = useState<Team>({
@@ -21,8 +19,6 @@ const AddTeam: React.FC = ( ) => {
   })
 
   const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.auth.user)
 
   const handleInputChange = (e: any) => {
     const { name, value} = e.target;

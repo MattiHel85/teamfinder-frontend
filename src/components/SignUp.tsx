@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Container, Button, TextField, Divider, Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
@@ -19,7 +18,6 @@ const SignUp: React.FC<SignUpProps> = ({handleClose}) => {
     })
     const [message, setMessage] = useState<string>(''); 
     const dispatch: AppDispatch = useDispatch()
-    const navigate = useNavigate()
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value} = e.target;
