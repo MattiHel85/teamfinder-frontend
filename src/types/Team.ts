@@ -1,5 +1,5 @@
 export interface Team {
-    id: number;
+    id?: number;
     badgeUrl: string;
     name: string;
     nickname: string;
