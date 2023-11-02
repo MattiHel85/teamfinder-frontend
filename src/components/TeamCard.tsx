@@ -10,7 +10,8 @@ const TeamCard: React.FC<TeamProps> = ({team}) => {
       <Card 
         key={team.id}
         sx={{
-          width: "20em"
+          width: "20em",
+          margin: "2em"
         }}
       >
         <CardMedia 

@@ -35,6 +35,7 @@ const AddTeam: React.FC = ( ) => {
     console.log(newTeam)
     dispatch(addTeamAsync(newTeam))
     setNewTeam({
+      id: 0,
       badgeUrl: '',
       name: '',
       nickname: '',
