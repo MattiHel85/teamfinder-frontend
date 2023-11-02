@@ -31,7 +31,7 @@ const SignIn: React.FC<SignInProps> = ( {handleOpen}) => {
     } catch (error) {
       console.error('Signin failed:', error);
     }
-    navigate('/user-profile');
+    navigate('/profile');
   }
 
   return (

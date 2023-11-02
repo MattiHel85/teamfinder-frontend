@@ -72,7 +72,7 @@ const LandingPage: React.FC = () => {
                 onClose={handleClose}
             >
                 <Box sx={style}>
-                    <SignUp />
+                    <SignUp handleClose={handleClose} />
                 </Box>
             </Modal>
         </ Container>
