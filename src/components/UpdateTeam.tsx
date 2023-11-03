@@ -1,9 +1,6 @@
 import React, { useState} from 'react';
-import { Container, Button, TextField, Divider, Typography } from "@mui/material";
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../redux/store';
+import { Container, Button, TextField } from "@mui/material";
 import { Team } from '../types/Team';
-import { addTeamAsync } from '../redux/slices/teamSlice';
 
 const UpdateTeam: React.FC = ( ) => {
   const [editedTeam, setEditedTeam] = useState<Team>({
@@ -18,8 +15,6 @@ const UpdateTeam: React.FC = ( ) => {
     league: '',
     coach: ''
   })
-
-  const dispatch: AppDispatch = useDispatch();
 
   const handleInputChange = (e: any) => {
     const { name, value} = e.target;

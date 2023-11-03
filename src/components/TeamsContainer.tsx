@@ -5,7 +5,7 @@ import { RootState } from "../redux/slices/rootSlice";
 import { fetchTeamsAsync } from "../redux/slices/teamSlice";
 import { Team } from "../types/Team";
 import TeamCard from "./TeamCard";
-import {Typography} from "@mui/material"
+import {Container, Typography} from "@mui/material"
 
 
 const TeamsContainer: React.FC = () => {
@@ -40,13 +40,18 @@ const TeamsContainer: React.FC = () => {
       </Typography>
     }
     return (
-        <>
+        <Container
+          sx={{
+            display: 'flex',
+            flexDirection: 'row'
+          }}
+        >
             {
           teams && teams.map((team: Team) =>
             <TeamCard team={team}/>
           )
         }
-        </>
+        </ Container>
     )
 }
 

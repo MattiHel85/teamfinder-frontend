@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { Container, Button, TextField, Divider, Typography } from "@mui/material";
+import { Container, Button, TextField, Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store';
 import { Team } from '../types/Team';
