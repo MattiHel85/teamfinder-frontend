@@ -5,8 +5,8 @@ import { AppDispatch } from '../redux/store';
 import { Team } from '../types/Team';
 import { addTeamAsync } from '../redux/slices/teamSlice';
 
-const AddTeam: React.FC = ( ) => {
-  const [newTeam, setNewTeam] = useState<Team>({
+const UpdateTeam: React.FC = ( ) => {
+  const [editedTeam, setEditedTeam] = useState<Team>({
     id: 0,
     badgeUrl: '',
     name: '',
@@ -23,18 +23,16 @@ const AddTeam: React.FC = ( ) => {
 
   const handleInputChange = (e: any) => {
     const { name, value} = e.target;
-    setNewTeam((prevData) => ({
+    setEditedTeam((prevData) => ({
       ...prevData,
       [name]: value,
     }))
   }
 
 
-  const handleAddTeam = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEditTeam = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(newTeam)
-    dispatch(addTeamAsync(newTeam))
-    setNewTeam({
+    setEditedTeam({
       id: 0,
       badgeUrl: '',
       name: '',
@@ -50,29 +48,21 @@ const AddTeam: React.FC = ( ) => {
 
   return (
     <Container>
-      <Typography 
-        variant='h3'
-        sx={{
-          color: 'white',
-          margin: '.75em 0'
-        }}
-      >
-        Add Team
-      </Typography>
       <form
-        onSubmit={handleAddTeam}
+        onSubmit={handleEditTeam}
         method='POST'
         style={{
             display: 'flex',
             flexDirection: 'column',
-            width: '40em'
+            width: '60%',
+            margin: 'auto'
         }}
       >
         <TextField 
             label="Team name"
             type="name"
             name="name"
-            value={newTeam.name}
+            value={editedTeam.name}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -85,7 +75,7 @@ const AddTeam: React.FC = ( ) => {
             label="Team nickname"
             type="nickname"
             name="nickname"
-            value={newTeam.nickname}
+            value={editedTeam.nickname}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -98,7 +88,7 @@ const AddTeam: React.FC = ( ) => {
             label="Founded"
             type="founded"
             name="founded"
-            value={newTeam.founded}
+            value={editedTeam.founded}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -111,7 +101,7 @@ const AddTeam: React.FC = ( ) => {
             label="Ground name"
             type="groundName"
             name="groundName"
-            value={newTeam.groundName}
+            value={editedTeam.groundName}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -124,7 +114,7 @@ const AddTeam: React.FC = ( ) => {
             label="Ground capacity"
             type="groundCapacity"
             name="groundCapacity"
-            value={newTeam.groundCapacity}
+            value={editedTeam.groundCapacity}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -137,7 +127,7 @@ const AddTeam: React.FC = ( ) => {
             label="Country"
             type="country"
             name="country"
-            value={newTeam.country}
+            value={editedTeam.country}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -150,7 +140,7 @@ const AddTeam: React.FC = ( ) => {
             label="League"
             type="league"
             name="league"
-            value={newTeam.league}
+            value={editedTeam.league}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -163,7 +153,7 @@ const AddTeam: React.FC = ( ) => {
             label="Coach"
             type="coach"
             name="coach"
-            value={newTeam.coach}
+            value={editedTeam.coach}
             onChange={handleInputChange}
             sx={{
               margin: ".25em 0",
@@ -176,7 +166,7 @@ const AddTeam: React.FC = ( ) => {
             label="Badge URL"
             type="badgeUrl"
             name="badgeUrl"
-            value={newTeam.badgeUrl}
+            value={editedTeam.badgeUrl}
             onChange={handleInputChange}
             sx={{
                 margin: ".25em 0",
@@ -184,12 +174,12 @@ const AddTeam: React.FC = ( ) => {
                 borderRadius: '15px'
             }}
             required
-        />
-        <Button sx={{margin: ".25em 0", fontSize: '1.5em', fontWeight: '600', borderRadius: '15px'}} variant='contained' type='submit'>Add team</Button>
+        />       
+        <Button sx={{margin: ".25em 0", fontSize: '1em', fontWeight: '600', borderRadius: '15px'}} variant='contained' type='submit'>Update team</Button>
       </form>
     </Container>
       
   )
 }
 
-export default AddTeam
+export default UpdateTeam

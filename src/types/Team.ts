@@ -3,9 +3,9 @@ export interface Team {
     badgeUrl: string;
     name: string;
     nickname: string;
-    founded: number;
+    founded: number | null;
     groundName: string;
-    groundCapacity: number;
+    groundCapacity: number | null;
     country: string;
     league: string;
     coach: string;
