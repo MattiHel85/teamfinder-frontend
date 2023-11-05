@@ -1,10 +1,14 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { Container, Button, TextField } from "@mui/material";
 import { Team } from '../types/Team';
+import { AppDispatch } from '../redux/store';
+import { useDispatch } from 'react-redux';
+import { updateTeamById } from '../redux/slices/teamSlice';
+import { UpdateTeamProps } from '../types/Team';
 
-const UpdateTeam: React.FC = ( ) => {
+const UpdateTeam: React.FC<UpdateTeamProps> = ( {team} ) => {
   const [editedTeam, setEditedTeam] = useState<Team>({
-    id: 0,
+    _id: '',
     badgeUrl: '',
     name: '',
     nickname: '',
@@ -16,6 +20,23 @@ const UpdateTeam: React.FC = ( ) => {
     coach: ''
   })
 
+  useEffect(() => {
+    setEditedTeam({
+      _id: team._id,
+      badgeUrl: team.badgeUrl,
+      name: team.name,
+      nickname: team.nickname,
+      founded: team.founded,
+      groundName: team.groundName,
+      groundCapacity: team.groundCapacity,
+      country: team.country,
+      league: team.league,
+      coach: team.coach
+    })
+  }, [team])
+
+  const dispatch: AppDispatch = useDispatch();
+
   const handleInputChange = (e: any) => {
     const { name, value} = e.target;
     setEditedTeam((prevData) => ({
@@ -26,31 +47,20 @@ const UpdateTeam: React.FC = ( ) => {
 
 
   const handleEditTeam = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setEditedTeam({
-      id: 0,
-      badgeUrl: '',
-      name: '',
-      nickname: '',
-      founded: 0,
-      groundName: '',
-      groundCapacity: 0,
-      country: '',
-      league: '',
-      coach: ''
-    })
+    e.preventDefault()    
+    dispatch(updateTeamById(editedTeam))
   }
 
   return (
     <Container>
       <form
         onSubmit={handleEditTeam}
-        method='POST'
+        method='PUT'
         style={{
             display: 'flex',
             flexDirection: 'column',
             width: '60%',
-            margin: 'auto'
+            margin: '5em auto'
         }}
       >
         <TextField 

@@ -1,5 +1,5 @@
 export interface Team {
-    id?: number;
+    _id?: string;
     badgeUrl: string;
     name: string;
     nickname: string;
@@ -22,5 +22,9 @@ export interface ApiResponse {
 }
 
 export interface TeamProps {
+    team: Team
+}
+
+export interface UpdateTeamProps {
     team: Team
 }

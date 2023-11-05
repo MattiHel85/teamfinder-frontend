@@ -40,18 +40,30 @@ const TeamsContainer: React.FC = () => {
       </Typography>
     }
     return (
+      <>
+        <Typography
+          sx={{
+            color: 'white',
+            textTransform: 'uppercase',
+            textAlign: 'center',
+            fontSize: '15em'
+          }}
+        >
+          Teams
+        </Typography>
         <Container
           sx={{
             display: 'flex',
             flexDirection: 'row'
           }}
         >
-            {
+        {
           teams && teams.map((team: Team) =>
             <TeamCard team={team}/>
           )
         }
         </ Container>
+      </>
     )
 }
 

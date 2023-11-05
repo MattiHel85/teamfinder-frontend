@@ -17,6 +17,16 @@ const fetchTeamsAsync = createAsyncThunk('teams/fetchTeams', async () => {
     }
 });
 
+const fetchTeamById = createAsyncThunk('teams/fetchTeamById', async (teamId: string | undefined) => {
+    try {
+        const res = await fetch(`https://teamfinder.onrender.com/teams/${teamId}`)
+        const data = await res.json()
+        return data as Team[]
+    } catch (err) {
+        throw err
+    }
+})
+
 
 const addTeamAsync = createAsyncThunk('teams/addTeam', async (newTeam: Team) => {
     try {
@@ -30,6 +40,22 @@ const addTeamAsync = createAsyncThunk('teams/addTeam', async (newTeam: Team) => 
 
         const data = await res.json()
         console.log(data)
+        return data as Team
+    } catch (err) {
+        throw err
+    }
+})
+
+const updateTeamById = createAsyncThunk('teams/updateTeam', async (updatedTeam: Team) => {
+    try {
+        const res = await fetch(`https://teamfinder.onrender.com/teams/update/${updatedTeam._id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify(updatedTeam)
+        })
+        const data = await res.json()
         return data as Team
     } catch (err) {
         throw err
@@ -62,11 +88,32 @@ export const teamSlice = createSlice({
         builder.addCase(addTeamAsync.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message || 'An error occurred';
-            console.log(action.error.message)
+        });
+        builder.addCase(updateTeamById.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateTeamById.fulfilled, (state, action) => {
+            state.loading = false;
+            state.teams = [...state.teams, action.payload];
+        });
+        builder.addCase(updateTeamById.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message || 'An error occured';
+        });
+        builder.addCase(fetchTeamById.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(fetchTeamById.fulfilled, (state, action) => {
+            state.loading = false;
+            state.teams = action.payload;
+        });
+        builder.addCase(fetchTeamById.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message || 'An error occured';
         });
     }
 });
 
-export { fetchTeamsAsync, addTeamAsync };
+export { fetchTeamsAsync, addTeamAsync, updateTeamById, fetchTeamById };
 
 export default teamSlice.reducer;

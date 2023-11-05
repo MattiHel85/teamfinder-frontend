@@ -6,6 +6,7 @@ import LandingPage from './components/LandingPage';
 import UserProfile from './components/UserProfile';
 import AddTeam from './components/AddTeam';
 import UpdateTeam from './components/UpdateTeam';
+import TeamInfo from './components/TeamInfo';
 
 
 
@@ -18,7 +19,7 @@ const App: React.FC = () => {
           <Route path='/' element={<LandingPage />} />
           <Route path='/teams' element={<TeamsContainer />} />
           <Route path='/teams/addteam' element={<AddTeam />} />
-          <Route path='/teams/update/:id' element={<UpdateTeam />} />
+          <Route path='/teams/:id' element={<TeamInfo />} />
           <Route path='/profile' element={<UserProfile />} />
         </Routes>
       </Router>

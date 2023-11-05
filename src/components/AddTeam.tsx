@@ -7,7 +7,7 @@ import { addTeamAsync } from '../redux/slices/teamSlice';
 
 const AddTeam: React.FC = ( ) => {
   const [newTeam, setNewTeam] = useState<Team>({
-    id: 0,
+    _id: '',
     badgeUrl: '',
     name: '',
     nickname: '',
@@ -35,7 +35,7 @@ const AddTeam: React.FC = ( ) => {
     console.log(newTeam)
     dispatch(addTeamAsync(newTeam))
     setNewTeam({
-      id: 0,
+      _id: '',
       badgeUrl: '',
       name: '',
       nickname: '',
