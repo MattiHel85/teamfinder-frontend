@@ -5,7 +5,6 @@ import TeamsContainer from './components/TeamsContainer';
 import LandingPage from './components/LandingPage';
 import UserProfile from './components/UserProfile';
 import AddTeam from './components/AddTeam';
-import UpdateTeam from './components/UpdateTeam';
 import TeamInfo from './components/TeamInfo';
 
 

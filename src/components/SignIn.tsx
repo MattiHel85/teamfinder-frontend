@@ -66,7 +66,7 @@ const SignIn: React.FC<SignInProps> = ( {handleOpen}) => {
             }}
         />
         <Button sx={{margin: "10px 0px"}} variant='contained' type='submit'>Log in</Button>
-        <Button sx={{margin: "10px 0px"}} type='submit'>Forgotten password?</Button>
+        <Button sx={{margin: "10px 0px"}} onClick={() => console.log('Forgot password')}>Forgotten password?</Button>
         <Divider sx={{margin: "10px 0px", color: '#07005D'}}>No account?</Divider>        
         <Button sx={{margin: "10px 0px"}} variant='contained' color='success' onClick={handleOpen}>Create new account</Button>
       </form>
